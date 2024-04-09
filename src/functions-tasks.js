@@ -71,26 +71,10 @@ function getArgumentsCount(funcs) {
  *   power05(16) => 4
  *
  */
-function getPowerFunction(/* exponent */) {
-  /*   return function power(arg) {
-    if (exponent === 0) return 1;
-    let result = 1;
-    if (exponent % 1 !== 0) {
-      const left = exponent % 1;
-      const whole = Math.floor(exponent);
-    }
-    if (exponent < 0) {
-      for (let i = 0; i < -exponent; i += 1) {
-        result /= arg;
-      }
-    } else {
-      for (let i = 0; i < exponent; i += 1) {
-        result *= arg;
-      }
-    }
-    return result;
-  }; */
-  throw new Error('Not implemented');
+function getPowerFunction(exponent) {
+  return (x) => {
+    return x ** exponent;
+  };
 }
 
 /**
@@ -106,15 +90,18 @@ function getPowerFunction(/* exponent */) {
  *   getPolynom(8)     => y = 8
  *   getPolynom()      => null
  */
-function getPolynom() {
-  /*  const l = arguments.length;
-  if (l === 0) return null;
-  const result = [];
+function getPolynom(...args) {
+  return (x) => {
+    const l = args.length - 1;
+    if (args.length === 0) return null;
+    if (args.length === 1) return args[0];
+    let result = 0;
 
-  for (let i = 0 ; i < l; i += 1){
-    result.push(`${arguments[i]}*`)
-  } */
-  throw new Error('Not implemented');
+    for (let i = 0; i <= l; i += 1) {
+      result += args[i] * x ** (l - i);
+    }
+    return result;
+  };
 }
 
 /**
